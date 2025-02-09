@@ -26,9 +26,7 @@ public class OrderService {
 
     public double setTotal(Order order) {
 
-        return order.getBasic() + shippingService.getShipment(order.getBasic()) * (order.getDiscount()/100);
-
-
+               return order.getBasic() * (1 - order.getDiscount()/100) + shippingService.getShipment(order.getBasic());
 
     }
 }
