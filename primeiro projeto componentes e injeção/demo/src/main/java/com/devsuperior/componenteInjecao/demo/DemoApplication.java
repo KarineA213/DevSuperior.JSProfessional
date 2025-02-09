@@ -30,26 +30,18 @@ public class DemoApplication implements CommandLineRunner {
 
 		@Override
 		public void run(String... args) throws Exception {
-			//não funciona porque orderService não foi inicializado dentro do main().
-			//
-			//Para corrigir, mova a lógica de entrada de dados para run(), que é executado após a injeção do Spring Boot:
-			Scanner sc = new Scanner(System.in);
+		Order order1 = new Order(1034, 150.0, 20.0);
+		System.out.println("pedido código: " + order1.getCode());
+		System.out.println("Valor total: R$ " + orderService.setTotal(order1));
 
-			System.out.println("Componentes e injeção de valores");
-			System.out.println("Digite o código do seu pedido");
-			int code = sc.nextInt();
 
-			System.out.println("Digite o valor do seu pedido");
-			double basic = sc.nextDouble();
+		Order order2 = new Order(2282, 800.0, 10.0);
+		System.out.println("pedido código: " + order2.getCode());
+		System.out.println("Valor total: R$ " + orderService.setTotal(order2));
 
-			System.out.println("Digite o valor do seu desconto");
-			double discount = sc.nextDouble();
-
-			Order order = new Order(basic, discount, code);
-			double total = orderService.setTotal(order);
-
-			System.out.println("O código do seu pedido é: " + code);
-			System.out.println("O valor total do seu pedido é: " + total);
+		Order order3 = new Order(1309, 95.90, 0.0);
+		System.out.println("pedido código: " + order3.getCode());
+		System.out.println("Valor total: R$ " + orderService.setTotal(order3));
 
 
 		}
